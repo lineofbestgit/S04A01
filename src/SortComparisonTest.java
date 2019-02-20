@@ -1,8 +1,9 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -17,11 +18,16 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SortComparisonTest
 {
+	
+	public void SortComparisonTest() {
+		
+	}
     //~ Constructor ........................................................
     @Test
     public void testConstructor()
     {
         new SortComparison();
+    	
     }
 
     //~ Public Methods ........................................................
@@ -35,8 +41,10 @@ public class SortComparisonTest
     @Test
     public void test10() {
     	SortComparison sorter = new SortComparison();
-    	
-    	
+      
+        a = SortComparison.insertionSort(a);
+
+        assertTrue(Arrays.equals(aSorted, a));
     }
     
     // ----------------------------------------------------------
@@ -46,11 +54,8 @@ public class SortComparisonTest
     @Test
     public void testEmpty()
     {
+    	
     }
-
-
-    // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
-    // be executed at least once from at least one test.
 
     // ----------------------------------------------------------
     /**
@@ -59,23 +64,46 @@ public class SortComparisonTest
      *
      */
     public static void main(String[] args)
+   
     {
-        //TODO: implement this method
     	
-    	Scanner inputScanner;
+    	SortComparisonTest tester = new SortComparisonTest();
     	
-    	File file = new File("/sortingAlgs/src/sortingAlgs/S04A01/assignment input data files/numbers10.txt");
-    	try {
-            inputScanner = new Scanner(file);
+    	double[] a = new double[10];
+    	double[] aSorted = new double[10];
+    	int i = 0;
+    	
+    	Scanner inputScanner = null;
 
-            while(inputScanner.hasNextDouble())
-            {
-                System.out.println( inputScanner.nextDouble() );
-            }
-
-        } catch (FileNotFoundException e1) {
-                e1.printStackTrace();
+    	File file = new File("assignment input data files/numbers10.txt");
+    	File fileSorted = new File("src/assignment input data files/numbers10sorted.txt");
+    	
+        try {
+			inputScanner = new Scanner(file);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        while(inputScanner.hasNextDouble())
+        {
+         a[i] = inputScanner.nextDouble();
+         i++;
         }
+        
+        try {
+			inputScanner = new Scanner(fileSorted);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        i=0;
+        while(inputScanner.hasNextDouble())
+        {
+         aSorted[i] = inputScanner.nextDouble();
+         i++;
+        }
+        
+        tester.test10(a, aSorted);    	
     }
 
 }
