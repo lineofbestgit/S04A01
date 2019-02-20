@@ -1,4 +1,8 @@
+
 import static org.junit.Assert.assertEquals;
+
+import java.io.*;
+import java.util.Scanner;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +27,17 @@ public class SortComparisonTest
 
     //~ Public Methods ........................................................
 
+    /*
+     * Testing for normal array10 
+     * 
+     *
+     */
+    
+    @Test
+    public void test10() {
+    	SortComparison sorter = new SortComparison();
+    }
+    
     // ----------------------------------------------------------
     /**
      * Check that the methods work for empty arrays
@@ -45,6 +60,21 @@ public class SortComparisonTest
     public static void main(String[] args)
     {
         //TODO: implement this method
+    	
+    	Scanner inputScanner = new Scanner();
+    	
+    	File file = new File("/sortingAlgs/src/sortingAlgs/S04A01/assignment input data files/numbers10.txt");
+    	try {
+            inputScanner = new Scanner(file);
+
+            while(inputScanner.hasNextDouble())
+            {
+                System.out.println( inputScanner.nextDouble() );
+            }
+
+        } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+        }
     }
 
 }

@@ -4,7 +4,7 @@
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
  *
- *  @author
+ *  @author Saul O'Driscoll
  *  @version HT 2019
  */
 
@@ -18,9 +18,21 @@
      *
      */
     static double [] insertionSort (double a[]){
-
-        //todo: implement the sort
-    }//end insertionsort
+    	int i, j;
+    	double temp;
+    	
+    	for (;i < a.length;) {
+    		for (;j < a.length;j++) {
+    			if (a[j] > a[j+1]) {
+    				temp = a[j];
+    				a[j] = a[j+1];
+    				a[j+1] = temp;
+    				i++;
+    			}
+    		}
+    	}
+        
+    }
 
     /**
      * Sorts an array of doubles using Quick Sort.
